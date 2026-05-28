@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SCADA LOGIN</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="login-body">
+
+<div class="login-container">
+
+<!-- LOGO -->
+
+<div class="logo">
+
+<div class="logo-icon">
+⚡
+</div>
+
+<div>
+
+<h1>SCADA ILUMINACIÓN</h1>
+
+<p>Estadio Casimiro Sotelo</p>
+
+</div>
+
+</div>
+
+<!-- ERROR -->
+
+<div id="error" class="error" style="display:none;">
+
+Usuario o contraseña incorrecta
+
+</div>
+
+<!-- FORMULARIO -->
+
+<form id="loginForm">
+
+<div class="form-group">
+
+<label>Usuario</label>
+
+<div class="input-box">
+
+<i class="fa fa-user"></i>
+
+<input
+type="text"
+id="usuario"
+placeholder="Ingrese usuario"
+required>
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>Contraseña</label>
+
+<div class="input-box">
+
+<i class="fa fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Ingrese contraseña"
+required>
+
+</div>
+
+</div>
+
+<button type="submit" class="login-btn">
+
+<i class="fa fa-right-to-bracket"></i>
+
+INGRESAR
+
+</button>
+
+</form>
+
+</div>
+
+<!-- LOGIN SCRIPT -->
+
+<script>
+
+const form =
+document.getElementById("loginForm");
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+// USUARIO
+
+let user =
+document.getElementById("usuario").value;
+
+// PASSWORD
+
+let pass =
+document.getElementById("password").value;
+
+// VALIDAR
+
+if(
+user === "admin"
+&&
+pass === "admin123"
+){
+
+// GUARDAR LOGIN
+
+localStorage.setItem(
+"scada_login",
+"true"
+);
+
+// IR AL DASHBOARD
+
+window.location.href =
+"dashboard.html";
+
+}else{
+
+// ERROR
+
+document.getElementById("error")
+.style.display = "block";
+
+}
+
+});
+
+</script>
+
+<!-- APP JS -->
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

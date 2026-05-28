@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SCADA - Reportes</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="logo-box">
+
+<div class="logo-icon">⚡</div>
+
+<div>
+
+<h2>SCADA ILUMINACIÓN</h2>
+<span>Estadio Casimiro Sotelo</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li>
+<a href="dashboard.html">
+<i class="fa fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li class="active">
+<a href="reportes.html">
+<i class="fa fa-file-lines"></i>
+Reportes
+</a>
+</li>
+
+<li>
+<a href="tutorial.html">
+<i class="fa fa-video"></i>
+Tutorial
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+<!-- CONTENIDO -->
+
+<main class="main-content">
+
+<div class="topbar">
+
+<h1>📄 Reportes del Sistema</h1>
+
+</div>
+
+<!-- FORMULARIO -->
+
+<div class="card">
+
+<div class="card-title">
+
+<i class="fa fa-pen"></i>
+
+Nuevo Reporte
+
+</div>
+
+<div class="report-form">
+
+<input
+type="text"
+id="reportTitle"
+placeholder="Título del reporte">
+
+<textarea
+id="reportComment"
+placeholder="Escriba observaciones o comentarios..."></textarea>
+
+<button
+class="save-report-btn"
+onclick="saveReport()">
+
+<i class="fa fa-floppy-disk"></i>
+
+Guardar Reporte
+
+</button>
+
+</div>
+
+</div>
+
+<!-- LISTA -->
+
+<div class="card" style="margin-top:30px;">
+
+<div class="card-title">
+
+<i class="fa fa-file-lines"></i>
+
+Reportes Guardados
+
+</div>
+
+<div id="reportsList"></div>
+
+</div>
+
+</main>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

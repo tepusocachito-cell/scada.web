@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SCADA Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div>
+
+<div class="logo-box">
+
+<div class="logo-icon">
+⚡
+</div>
+
+<div>
+
+<h2>SCADA<br>ILUMINACIÓN</h2>
+
+<span>Estadio Casimiro Sotelo</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li class="active">
+<a href="dashboard.html">
+<i class="fa fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="reportes.html">
+<i class="fa fa-file-lines"></i>
+Reportes
+</a>
+</li>
+
+<li>
+<a href="tutorial.html">
+<i class="fa fa-video"></i>
+Tutorial
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- ESTADO SISTEMA -->
+
+<div class="system-box">
+
+<h3>Estado del Sistema</h3>
+
+<div class="system-status">
+<span>Servidor</span>
+<span class="online">ONLINE</span>
+</div>
+
+<div class="system-status">
+<span>Base Datos</span>
+<span class="online">ONLINE</span>
+</div>
+
+<div class="system-status">
+<span>PLC</span>
+<span id="plcText" class="offline">
+DESCONECTADO
+</span>
+</div>
+
+</div>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main-content">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div class="topbar-left">
+
+<h1>Dashboard</h1>
+
+<p>Monitoreo y control del sistema</p>
+
+</div>
+
+<div class="top-actions">
+
+<div class="plc-status" id="plcStatus">
+🔴 PLC DESCONECTADO
+</div>
+
+<button class="btn-green"
+onclick="togglePLC()"
+id="plcButton">
+
+Conectar PLC
+
+</button>
+
+<button class="user-btn">
+<i class="fa fa-user"></i>
+Administrador
+</button>
+
+<button class="logout-btn"
+onclick="logout()">
+
+Salir
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GRID -->
+
+<div class="dashboard-grid">
+
+<!-- IZQUIERDA -->
+
+<div>
+
+<!-- CANCHA -->
+
+<div class="card">
+
+<div class="card-title">
+
+<i class="fa fa-futbol"></i>
+
+CANCHA INTERACTIVA
+
+</div>
+
+<div class="field">
+
+<div id="L1" class="lamp">
+L1
+</div>
+
+<div id="L2" class="lamp">
+L2
+</div>
+
+<div id="L3" class="lamp">
+L3
+</div>
+
+<div id="L4" class="lamp">
+L4
+</div>
+
+</div>
+
+</div>
+
+<!-- ESTADO -->
+
+<div class="card" style="margin-top:25px;">
+
+<div class="card-title">
+
+<i class="fa fa-chart-column"></i>
+
+ESTADO DE LUMINARIAS
+
+</div>
+
+<div class="status-grid">
+
+<div class="status-box">
+
+<h3>L1</h3>
+
+<p>Noroeste</p>
+
+<div class="bulb active-light" id="bulb1">
+💡
+</div>
+
+<h4 id="txt1">APAGADA</h4>
+
+</div>
+
+<div class="status-box">
+
+<h3>L2</h3>
+
+<p>Noreste</p>
+
+<div class="bulb active-light" id="bulb2">
+💡
+</div>
+
+<h4 id="txt2">APAGADA</h4>
+
+</div>
+
+<div class="status-box">
+
+<h3>L3</h3>
+
+<p>Suroeste</p>
+
+<div class="bulb active-light" id="bulb3">
+💡
+</div>
+
+<h4 id="txt3">APAGADA</h4>
+
+</div>
+
+<div class="status-box">
+
+<h3>L4</h3>
+
+<p>Sureste</p>
+
+<div class="bulb active-light" id="bulb4">
+💡
+</div>
+
+<h4 id="txt4">APAGADA</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DERECHA -->
+
+<div>
+
+<!-- CONTROL -->
+
+<div class="card control-card">
+
+<div class="card-title">
+
+<i class="fa fa-sliders"></i>
+
+PANEL DE CONTROL
+
+</div>
+
+<button class="big-btn green"
+onclick="allOn()">
+
+💡 ENCENDER TODO
+
+</button>
+
+<button class="big-btn red"
+onclick="allOff()">
+
+⛔ APAGAR TODO
+
+</button>
+
+<div class="zone-grid">
+
+<button class="zone-btn"
+onclick="zonaOeste()">
+
+⬅ ZONA OESTE
+
+</button>
+
+<button class="zone-btn"
+onclick="zonaEste()">
+
+ZONA ESTE ➡
+
+</button>
+
+</div>
+
+</div>
+
+<!-- INFO -->
+
+<div class="card" style="margin-top:25px;">
+
+<div class="card-title">
+
+<i class="fa fa-circle-info"></i>
+
+INFORMACIÓN DEL SISTEMA
+
+</div>
+
+<div class="system-status">
+<span>PLC</span>
+<span id="infoPLC">Desconectado</span>
+</div>
+
+<div class="system-status">
+<span>Modo</span>
+<span>Manual</span>
+</div>
+
+<div class="system-status">
+<span>Usuarios</span>
+<span>1</span>
+</div>
+
+<div class="system-status">
+<span>Versión</span>
+<span>2.0</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
